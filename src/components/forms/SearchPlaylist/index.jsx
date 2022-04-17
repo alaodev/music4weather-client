@@ -20,7 +20,7 @@ import Button from "../../controllers/Button";
 import Select from "../../controllers/Select";
 
 const SearchPlaylist = () => {
-  const { setPlaylist } = useContext(PlaylistContext)
+  const { setPlaylist, setTemperature } = useContext(PlaylistContext)
 
   const [searchBy, setSearchBy] = useState('city');
 
@@ -90,8 +90,8 @@ const SearchPlaylist = () => {
           const result = await http.get(
             `music4weather/${cities[city].latitude}/${cities[city].longitude}`
           );
-          setPlaylist(result.data);
-          setIsLoading(false);
+          setPlaylist(result.data.playlist);
+          setTemperature(result.data.temperature);
         }
       } else {
         if (validateCoordinatesFields()) {
@@ -99,13 +99,16 @@ const SearchPlaylist = () => {
           const result = await http.get(
             `music4weather/${latitude}/${longitude}`
           );
-          setPlaylist(result.data);
-          setIsLoading(false);
+          setPlaylist(result.data.playlist);
+          setTemperature(result.data.temperature);
         }
       }
     } catch (e) {
       console.error(e);
+      alert('Falha ao buscar sua playlist. Tente novamente!');
       throw e;
+    } finally {
+      setIsLoading(false);
     }
   }
 
