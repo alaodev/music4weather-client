@@ -61,5 +61,9 @@ npm run dev
 
 Por padrão a aplicação irá iniciar na porta 3000.
 
+## Funcionamento
+
+![CPT2204172104-1201x919 (1)](https://user-images.githubusercontent.com/61799923/163737233-bf01f64f-f512-452b-95d2-0f3429521fa1.gif)
+
 
 [⬆ Voltar para o topo](#nlw_heat_node)<br>
